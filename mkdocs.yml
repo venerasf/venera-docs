@@ -1,0 +1,43 @@
+site_name: Venera Project
+repo_url: https://github.com/farinap5/Venera
+site_description: Venera Framework documentation
+site_author: farinap5
+
+theme:
+  name: material
+  favicon: null
+  logo: null
+  palette: 
+    - scheme: default
+      toggle:
+        icon: material/brightness-7 
+        name: Switch to dark mode
+    - scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+
+nav:
+  - Introduction: index.md
+  - Contribution: Contribution.md
+  - Instalation: Instalation.md
+  - First Steps: "First\ Steps.md"
+  - Search: Search.md
+  - Script Management Commands: "Script\ Management\ Commands.md"
+  - Global Variables: "Global\ Variables.md"
+  - Script Engine:
+    - Introduction: "Script\ Engine/Introduction.md"
+    - Metadata: "Script\ Engine/Metadata.md"
+    - Variables: "Script\ Engine/Variables.md"
+    - Built-in Functions: "Script\ Engine/Built-in\ Functions.md"
+    - Examples:
+      - First Script: "Script\ Engine/Examples/First\ Script.md"
