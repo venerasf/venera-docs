@@ -10,7 +10,7 @@ The way to configure a global variable is exactly the same as how to configure a
 What changes is that it is now necessary to use the `global` keyword after the `set` command.
 
 ```
-[*]>> set global <key> <value>
+[*]>> global set <key> <value>
 ```
 
 The way of viewing the global variables is simple, just type `globals` and the output will contain all the variables already set so far.
@@ -56,7 +56,7 @@ So if this variable is common, it is possible to set it outside the script and w
 Configure the variable `URL`.
 
 ```
-[*]>> set global URL http://mydomain.com
+[*]>> global set URL http://mydomain.com
 ```
 
 And load the script.

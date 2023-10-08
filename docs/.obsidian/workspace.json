@@ -49,7 +49,19 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Contribution.md",
+                "file": "Global Variables.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "58c3b3bd00be6055",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Script Engine/Introduction.md",
                 "mode": "source",
                 "source": false
               }
@@ -68,7 +80,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -134,7 +146,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Contribution.md",
+                "file": "Script Engine/Introduction.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -151,7 +163,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Contribution.md",
+                "file": "Script Engine/Introduction.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -174,7 +186,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Contribution.md"
+                "file": "Script Engine/Introduction.md"
               }
             }
           }
@@ -195,24 +207,25 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "e37f772709b2d027",
+  "active": "58c3b3bd00be6055",
   "lastOpenFiles": [
-    "Script Management Commands.md",
-    "Search.md",
-    "index.md",
-    "Global Variables.md",
-    "First Steps.md",
-    "Pentesting With Venera",
-    "Instalation.md",
-    "Shortcuts.md",
-    "Contribution.md",
     "Script Engine/Examples/First Script.md",
     "Script Engine/Variables.md",
-    "Script Engine/Introduction.md",
-    "Script Engine/Development Commands.md",
-    "Script Engine/Built-in Libraries.md",
-    "Script Engine/Built-in Functions.md",
     "Script Engine/Metadata.md",
+    "Script Engine/Development Commands.md",
+    "Script Engine/Introduction.md",
+    "Script Engine/Built-in Functions.md",
+    "Global Variables.md",
+    "Installation.md",
+    "index.md",
+    "Venera Package Manager.md",
+    "Script Management Commands.md",
+    "Search.md",
+    "Shortcuts.md",
+    "First Steps.md",
+    "Contribution.md",
+    "Script Engine/Built-in Libraries.md",
+    "Pentesting With Venera",
     "Script Engine",
     "Script Engine/Examples"
   ]

@@ -1,3 +1,5 @@
+# Search Command
+
 The `search` command allows searching and listing scripts by assigning different filtering parameters.
 
 The use is very straight forward as it takes proprieties from name, path and metadata to bring results. 

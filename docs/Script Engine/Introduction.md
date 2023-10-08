@@ -2,4 +2,6 @@ To achieve the goal of having a simple and very effective scripting system `vene
 
 As this is a widely used language in embedded systems, game systems and so on, it has the advantage of being powerful, very light and fast but extremely simple to write algorithms with it.
 
-To write code for `venera` it is necessary to have a Lua language base, so contact the documentation at the following link: [www.lua.org/docs.html](https://www.lua.org/docs.html)
+To write code for `venera` it is necessary to have a Lua language base, so contact the documentation at the following link: [www.lua.org/docs.html](https://www.lua.org/docs.html).
+
+Take a look at [[First Script]] to start creating your automations.

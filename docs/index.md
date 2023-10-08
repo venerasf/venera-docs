@@ -4,6 +4,8 @@ Venera is a tool for automating customized tests and attacks agaist many kinds o
 
 The framework is written in Golang looking for compatibility. The simplicity and malleability of the tool is one of the main objectives. Be something powerful and capable, while not being time-consuming to compile and resolve libraries.
 
+As the tool is constantly under development and changes may occur all the time, some areas of this documentation may no longer conform to reality. In this case, I ask you to be patient.
+
 ```
         __    _ ____________________________________
         \ \  | |   ___   _  _    ___   _  _   __ _  |
@@ -13,3 +15,4 @@ The framework is written in Golang looking for compatibility. The simplicity and
            -----------------------------------------+
            Recon Mission: github.com/farinap5/venera
 ```
+

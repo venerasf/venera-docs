@@ -1,3 +1,5 @@
+# First Script
+
 Putting together everything seen before, write a script capable of printing what is defined by the user through the command line, so when the user initializes the `main()` function of the script through the command line using the `run` command, this string should appear on the screen.
 
 Create a script `/tmp/test.lua` and write the following content:
