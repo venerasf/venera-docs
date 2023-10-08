@@ -1,0 +1,270 @@
+{
+  "main": {
+    "id": "a5be94c94af25f51",
+    "type": "split",
+    "children": [
+      {
+        "id": "f4d0fbd0bf21ce70",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "96ba6922a1c88cb7",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Script Engine/Examples/First Script.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "e5e38ea08eb101ba",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "index.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "537dddb11f6e031c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Contribution.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "e37f772709b2d027",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Search.md",
+                "mode": "preview",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "58c3b3bd00be6055",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Installation.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "fab95203fa7ccef9",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Script Engine/Examples/First Script.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ],
+        "currentTab": 3
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "811db5a453287700",
+    "type": "split",
+    "children": [
+      {
+        "id": "d2ca2fa948fa8861",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ba4dea6d9613b9ca",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "2dc673ba6b794f79",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "d77cd578a7bfa8d0",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200
+  },
+  "right": {
+    "id": "dd26f6b70c8fdb2c",
+    "type": "split",
+    "children": [
+      {
+        "id": "39f64f4e894eab70",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "38a2b3f9f299636c",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Shortcuts.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "08a7c0013694c558",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Shortcuts.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "217e7bc65b81153c",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "fe12cfa12791143a",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Shortcuts.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 436.5,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "webpage-html-export:Export Vault to HTML": false
+    }
+  },
+  "floating": {
+    "id": "c08e8806cffc06d5",
+    "type": "floating",
+    "children": [
+      {
+        "id": "65be7f82b192b691",
+        "type": "window",
+        "children": [
+          {
+            "id": "295890349665dff4",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "1b2ba4d03b697249",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "Shortcuts.md",
+                    "mode": "preview",
+                    "source": false
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "direction": "vertical",
+        "x": 356,
+        "y": 182,
+        "width": 800,
+        "height": 401,
+        "maximize": false,
+        "zoom": 0
+      }
+    ]
+  },
+  "active": "1b2ba4d03b697249",
+  "lastOpenFiles": [
+    "Search.md",
+    "Script Management Commands.md",
+    "Installation.md",
+    "index.md",
+    "Global Variables.md",
+    "First Steps.md",
+    "Contribution.md",
+    "Script Engine/Variables.md",
+    "Script Engine/Metadata.md",
+    "Script Engine/Introduction.md",
+    "Script Engine/Development Commands.md",
+    "Script Engine/Built-in Libraries.md",
+    "Script Engine/Built-in Functions.md",
+    "Script Engine/Examples/First Script.md",
+    "Shortcuts.md",
+    "Venera Package Manager.md",
+    "Pentesting With Venera",
+    "Script Engine",
+    "Script Engine/Examples"
+  ]
+}
