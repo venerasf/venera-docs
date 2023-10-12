@@ -46,7 +46,7 @@ Use the command `install <script path>` download one script from the remote repo
 ```
 ### Verify Repo Signature
 
-The command `verify` may be used to see if the signature of `package.yaml` can be trusted, has been created by a trusted author it says. It works because Venera has the author's public key installed, will use it to verify if the hash in file `package.sgn` (containing `package.yam` signature) is valid and has been signed by that auth's private key.
+The command `verify` may be used to see if the signature of `package.yaml` can be trusted and has been created by a trusted author as it says. It works because Venera has the author's public key installed, will use it to verify if the hash in file `package.sgn` (containing `package.yam` signature) is valid and has been signed by that auth's private key.
 
 ```
 [vnr]>> vpm verify
