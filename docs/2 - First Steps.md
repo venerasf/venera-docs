@@ -1,14 +1,14 @@
 # First Steps
 
-Now that you have Venera installed following [[Installation]], after before steps it must be ready to go. To run it, open a new command line and run the binary with the `venera` command, this should load a new interactive prompt, the tool's interface where the user should take their actions.
+Now that you have Venera installed following [[1 - Installation]], after before steps it must be ready to go. To run it, open a new command line and run the binary with the `venera` command, this should load a new interactive prompt, the tool's interface where the user should take their actions.
 
 After `venera` starts up, it must present a banner containing version information and the repository in addition to its name.
 
-You will notice that there are no scripts to be executed, that is, the tool does nothing. The first thing you must is to download the scripts from the official repository, or whatever else you want. Do this by using [[Venera Package Manager]] (VPM), a built-in package manager for scripts.
+You will notice that there are no scripts to be executed, that is, the tool does nothing. The first thing you must is to download the scripts from the official repository, or whatever else you want. Do this by using [[6 - Venera Package Manager]] (VPM), a built-in package manager for scripts.
 
 ## Syncing With The Main Repository
 
-The main repository from where the scripts will be downloaded is `http://r.venera.farinap5.com/package.yaml`, you can see it and change for another by using [[Global Variables]].
+The main repository from where the scripts will be downloaded is `http://r.venera.farinap5.com/package.yaml`, you can see it and change for another by using [[4 - Global Variables]].
 
 Type the `sync` command from VPN and synchronize the scripts.
 

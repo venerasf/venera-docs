@@ -1,4 +1,5 @@
 {
   "spellcheckLanguages": null,
-  "spellcheck": false
+  "spellcheck": false,
+  "alwaysUpdateLinks": true
 }

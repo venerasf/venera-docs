@@ -2,9 +2,11 @@
 
 Putting together everything seen before, write a script capable of printing what is defined by the user through the command line, so when the user initializes the `main()` function of the script through the command line using the `run` command, this string should appear on the screen.
 
+## Write Some Code
+
 Create a script `/tmp/test.lua` and write the following content:
 
-```lua
+```lua HL: 3 TL: "aa"
 METADATA = {
     AUTHOR = {"Author1 <author1@mail.com>",
                 "Author2 <author2@mail.com>",
@@ -32,9 +34,15 @@ function Main()
 end
 ```
 
+>[!info]  [[Metadata]] is crucial, with this you define the identity of the script.
+
+>[!tip]  Create the user interaction point in VARS ([[Variables]]).
+
+## Import To Venera and Use It
+
 It is necessary to import the script into a directory where `venera` has access. Use the `import` command as shown below:
 
-```
+```demo
 [*]>> import /tmp/test.lua test.lua
 ```
 

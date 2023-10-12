@@ -1,0 +1,39 @@
+{
+  "callouts": {
+    "custom": [],
+    "settings": {
+      "tip": [
+        {
+          "changes": {}
+        },
+        {
+          "condition": {
+            "colorScheme": "light"
+          },
+          "changes": {}
+        },
+        {
+          "condition": {
+            "colorScheme": "dark"
+          },
+          "changes": {
+            "color": "83, 223, 221"
+          }
+        }
+      ],
+      "info": [
+        {
+          "changes": {
+            "color": "66, 154, 255"
+          }
+        }
+      ]
+    }
+  },
+  "calloutDetection": {
+    "obsidianFallbackForced": false,
+    "obsidian": true,
+    "theme": true,
+    "snippet": true
+  }
+}

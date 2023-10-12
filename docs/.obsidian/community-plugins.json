@@ -1,4 +1,6 @@
 [
   "obsidian-languagetool-plugin",
-  "obsidian-footnotes"
+  "obsidian-footnotes",
+  "callout-manager",
+  "webpage-html-export"
 ]

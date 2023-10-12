@@ -16,3 +16,9 @@ As the tool is constantly under development and changes may occur all the time, 
            Recon Mission: github.com/farinap5/venera
 ```
 
+> [!info] If you want to start using Venera, take a look at the instalation.
+> [[1 - Installation]]
+
+> [!tip] If you have it installed, start using Venera!
+> - [[2 - First Steps]]
+> - [[3 - Search]]
