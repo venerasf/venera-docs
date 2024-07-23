@@ -4,13 +4,14 @@ The `vpm` is a command that allows you to manage the scripts in your base. It ha
 
 > [!faq] The default repository is `http://r.venera.farinap5.com/package.yaml`
 
-The file `package.sgn` contains the references to the scripts. This file could have any name, so it must be written correctly.
+The file `package.yaml` contains the references to the scripts. This file could have any name, so it must be written correctly.
 
 >[!faq] The file `package.sgn` has the signature for verification
 
-This will be used to check if there has been any compromise in the scripts (!!not working yet!!). Must be changed with caution. Verification is done based on trust in that author. Your installation must trust that author, so that the functions are downloaded.
+This will be used to check if there has been any compromise in the scripts. Must be changed with caution. Verification is done based on trust for that author who has signed the package. Your installation must trust that author, so that the scripts are downloaded.
 ## Basic Commands
 
+VPM has any commands for managing the scripts.
 ### Search Scripts
 
 Use the command `search <pattern>` to see all scripts matching with given pattern.

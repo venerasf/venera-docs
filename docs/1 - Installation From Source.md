@@ -32,7 +32,7 @@ go version go1.21.2 linux/amd64
 ## Downloading and compiling Source Code
 
 ```
-git clone https://github.com/farinap5/Venera.git
+git clone https://github.com/venerasf/Venera.git
 cd Venera
 ```
 
@@ -68,5 +68,7 @@ root@venera:~/Venera# go run .
 ```
 
 Now you can start using Venera.
+
+You may use `dokerfile` as well.
 
 [^1]: https://go.dev/dl/

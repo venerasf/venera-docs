@@ -15,3 +15,5 @@ METADATA = {
     INFO = [[HTTP requests with lua-go]]
 }
 ```
+
+This data is used by Venera Search Engine to index the script, list and so on.

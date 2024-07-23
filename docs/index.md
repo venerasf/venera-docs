@@ -17,7 +17,7 @@ As the tool is constantly under development and changes may occur all the time, 
 ```
 
 > [!info] If you want to start using Venera, take a look at the instalation.
-> [[1 - Installation]]
+>- [[1 - Installation From Source]]
 
 > [!tip] If you have it installed, start using Venera!
 > - [[2 - First Steps]]

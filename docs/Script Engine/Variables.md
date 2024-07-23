@@ -37,3 +37,11 @@ VARIABLE  DEFAULT             NEEDED  DESCRIPTION
 URL       http://google.com   yes     URL
 METHOD    GET                 yes     METHOD
 ```
+
+When writing your scripts you may access the value by simply using the value direct from the table:
+
+```
+function Main()
+    local request = http.request(VARS.METHOD.VALUE, VARS.URL.VALUE)
+    local result, err = client:do_request(request)
+```

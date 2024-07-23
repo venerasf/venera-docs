@@ -1,16 +1,15 @@
-
 The global variable acts like a simple key-value database. It must be used for storing data that can be accessed globally by the core tool and the scripts executed.
 
-Global variables are persistent, and will remain set between sessions.
+Global variables are persistent, and will remain between sessions.
 
 ## How it Works
 
 The way to configure a global variable is exactly the same as how to configure a script variable. The user uses the `set` command followed by the key and the values to assign for that specific key.
 
-What changes is that it is now necessary to use the `global` keyword after the `set` command.
+What changes is that it is now necessary to use the `global` keyword before the `set` command.
 
 ```
-[*]>> global set <key> <value>
+[*]>> globals set <key> <value>
 ```
 
 The way of viewing the global variables is simple, just type `globals` and the output will contain all the variables already set so far.
@@ -33,7 +32,7 @@ logfile    ~/.venera/message.log
 
 Global variables, just like environment variables of an operating system, will contain some options that the core tool will take into account when taking some actions.
 
-For instance, it is possible to configure the location where `venera` stores the execution log, it is taken from the global variable `logfile` so altering the value will change the place to keep the debugging data. You could prefer keep this type of data under /var/log or other place, globals is where to change this.
+For instance, it is possible to configure the location where `venera` stores the execution logs, it is taken from the global variable `logfile` so altering the value will change the place to keep the debugging data. You could prefer keep this type of data under /var/log or other place, globals is where to change this.
 
 ## Automate Script Configuration
 
@@ -71,4 +70,4 @@ VARIABLE  DEFAULT              REQUIRED  DESCRIPTION
 URL       http://mydomain.com  yes       URL
 ```
 
-Notice that the variable was set automatically.
+Notice that the variable was configured automatically.
