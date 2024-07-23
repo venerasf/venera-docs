@@ -1,0 +1,286 @@
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[docs]]></title><description><![CDATA[Obsidian digital garden]]></description><link>http://github.com/dylang/node-rss</link><image><url>lib/media/favicon.png</url><title>docs</title><link/></image><generator>Webpage HTML Export plugin for Obsidian</generator><lastBuildDate>Tue, 23 Jul 2024 01:08:58 GMT</lastBuildDate><atom:link href="lib/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Tue, 23 Jul 2024 01:08:58 GMT</pubDate><ttl>60</ttl><dc:creator/><item><title><![CDATA[7 - Import And Export Scripts]]></title><description><![CDATA[ 
+ <br>If you have a script outside the tool and want to import it so that it can be found by the Venera, there are a few ways. In fact, there are a few ways to show the venerate where the script is.<br>The first way is to place the script manually in the scripts folder, usually ~/.venera/scripts/*. Then, you choose the subfolder that makes sense. But there are other methods.<br><br>The first method is to script it with the import command.<br>[vnr]&gt;&gt; import /home/user/Desktop/myscript.lua /myscript.lua
+Copy<br>Where was the script actually positioned on my system? This can be seen by the global variable myscripts.<br>[vnr]&gt;&gt; globals
+
+VARIABLE    VALUE
+--------    -----
+...
+myscripts   /home/pietro/.venera/scripts/myscripts/
+...
+Copy<br>Now, reload the root.<br>[vnr]&gt;&gt; reload root
+Copy<br>And Venera know about your script. You can search for it.<br><br>The way to export a script is similar, use the export command.<br>[vnr]&gt;&gt; myscript.lua /home/user/Desktop/myscript.lua
+Copy]]></description><link>7-import-and-export-scripts.html</link><guid isPermaLink="false">7 - Import And Export Scripts.md</guid><pubDate>Tue, 23 Jul 2024 01:07:25 GMT</pubDate></item><item><title><![CDATA[First Script]]></title><description><![CDATA[ 
+ <br><br>Putting together everything seen before, write a script capable of printing what is defined by the user through the command line, so when the user initializes the main() function of the script through the command line using the run command, this string should appear on the screen.<br><br>Create a script /tmp/test.lua and write the following content:<br>METADATA = {
+    AUTHOR = {"Author1 &lt;author1@mail.com&gt;",
+                "Author2 &lt;author2@mail.com&gt;",
+                "Author3 &lt;author3@mail.com&gt;"
+            },
+    VERSION = "0.1",
+    TAGS = {"example","test"},
+    INFO = [[Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+nisi ut aliquip ex ea commodo consequat.]]
+}
+
+VARS = {
+    DATA = {VALUE="my data", NEEDED="yes", DESCRIPT="Any"},
+}
+
+function Init()
+    Meta(METADATA)
+    LoadVars(VARS)
+end
+
+function Main()
+    PrintSuccs(VARS.DATA.VALUE)
+end
+Copy<br> <a data-href="Metadata" href="script-engine/metadata.html" class="internal-link" target="_self" rel="noopener">Metadata</a> is crucial, with this you define the identity of the script.<br> Create the user interaction point in VARS (<a data-href="Variables" href="script-engine/variables.html" class="internal-link" target="_self" rel="noopener">Variables</a>).<br><br>It is necessary to import the script into a directory where venera has access. Use the import command as shown below:<br>[*]&gt;&gt; import /tmp/test.lua test.lua
+Copy<br>The script was written in location scripts/myscripts/test.lua. Load the imported script with use command:<br>[*]&gt;&gt; use scripts/myscripts/test.lua
+(scripts/myscripts/test.lua)&gt;&gt; 
+Copy<br>The moment the script has been loaded, the Init() function is executed, loading the essential tables (METADATA and VARS) and any code that exists there.<br>Type info to show information about the script:<br>(scripts/myscripts/test.lua)&gt;&gt; info
+## AUTHOR/S ##
+1) Author1 &lt;author1@mail.com&gt;
+2) Author2 &lt;author2@mail.com&gt;
+3) Author3 &lt;author3@mail.com&gt;
+
+## TAGS ##
+1) example
+2) test
+
+## INFO ##
+Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+nisi ut aliquip ex ea commodo consequat.
+Copy<br>Type options to see what the user can configure: <br>(scripts/myscripts/test.lua)&gt;&gt; options
+
+VARIABLE  DEFAULT  REQUIRED  DESCRIPTION
+--------  -------  --------  -----------
+DATA      my data  yes       Any
+Copy<br>Set any value to the DATA variable with the command set:<br>(scripts/myscripts/test.lua)&gt;&gt; set DATA Hello World\n
+[OK] DATA &lt;- Hello World\n
+Copy<br>And finally execute the script:<br>(scripts/myscripts/test.lua)&gt;&gt; run
+[OK]- Hello World
+Copy]]></description><link>script-engine/examples/first-script.html</link><guid isPermaLink="false">Script Engine/Examples/First Script.md</guid><pubDate>Mon, 22 Jul 2024 23:07:11 GMT</pubDate></item><item><title><![CDATA[Built-in Functions]]></title><description><![CDATA[ 
+ <br><br>Venera has built-in functions allowing you to call them from within your script. This makes it possible to define standards, giving the script developer the sole concern of writing the script, without thinking too much about how it will behave in terms of interaction with the environment.<br><br>PrintSuccs( str ) Print success message.<br>PrintErr( str ) Print error message.<br>PrintInfo( str ) Print info message.<br>PrintSuccsln( str ) Print success message with line ending.<br>PrintErrln( str ) Print error message with line ending.<br>PrintInfoln( str ) Print info message with line ending.<br>Print( str ) Print string.<br>Println( str ) Print string with line ending.<br><br>Input( str ) -&gt; str Prompt for an user input.<br><br>Call( path=str ) Call another script/module. The VARS (<a data-href="Variables" href="script-engine/variables.html" class="internal-link" target="_self" rel="noopener">Variables</a>) from caller scripts are inherited by scripts being called.<br>Open( str ) -&gt; str Read a local file.]]></description><link>script-engine/built-in-functions.html</link><guid isPermaLink="false">Script Engine/Built-in Functions.md</guid><pubDate>Mon, 22 Jul 2024 23:07:11 GMT</pubDate></item><item><title><![CDATA[Built-in Libraries]]></title><description><![CDATA[ 
+ ]]></description><link>script-engine/built-in-libraries.html</link><guid isPermaLink="false">Script Engine/Built-in Libraries.md</guid><pubDate>Mon, 22 Jul 2024 23:07:11 GMT</pubDate></item><item><title><![CDATA[Development Commands]]></title><description><![CDATA[ 
+ ]]></description><link>script-engine/development-commands.html</link><guid isPermaLink="false">Script Engine/Development Commands.md</guid><pubDate>Mon, 22 Jul 2024 23:07:11 GMT</pubDate></item><item><title><![CDATA[Introduction]]></title><description><![CDATA[ 
+ <br>To achieve the goal of having a simple and very effective scripting system venera has the ability to run scripts written in <a data-tooltip-position="top" aria-label="https://www.lua.org/docs.html" rel="noopener" class="external-link" href="https://www.lua.org/docs.html" target="_blank">Lua</a> as it has a coupled interpreter. The user is able to utilize all the power provided by a scripting language like Lua.<br>As this is a widely used language in embedded systems, game systems and so on, it has the advantage of being powerful, very light and fast but extremely simple to write algorithms with it.<br>To write code for venera it is necessary to have a Lua language base, so contact the documentation at the following link: <a data-tooltip-position="top" aria-label="https://www.lua.org/docs.html" rel="noopener" class="external-link" href="https://www.lua.org/docs.html" target="_blank">www.lua.org/docs.html</a>.<br> Take a look at <a data-href="First Script" href="script-engine/examples/first-script.html" class="internal-link" target="_self" rel="noopener">First Script</a> to start creating your automations.]]></description><link>script-engine/introduction.html</link><guid isPermaLink="false">Script Engine/Introduction.md</guid><pubDate>Mon, 22 Jul 2024 23:07:11 GMT</pubDate></item><item><title><![CDATA[Table METADATA]]></title><description><![CDATA[ 
+ <br><br>METADATA takes information reguarding the script so Venera can identify this module in its script base, all fields need to be configured properly.<br>
+<br>AUTHOR is a list of strings, others who created the script or have participated in research for that flaw it abuses as example.
+<br>VERSION module/script version.
+<br>TAGS Some tags that define the script and its purpose. Scripts can be searched and executed based on their tags.
+<br>INFO The description of the script may have, flaw that it abuses, type of test, proposed mitigations, it's up to the creator.
+<br>METADATA = {
+    AUTHOR = {"Author1 &lt;author1@mail.com&gt;","Author2 &lt;author2@mail.com&gt;"},
+    VERSION = "0.1",
+    TAGS = {"example","http","scanner"},
+    INFO = [[HTTP requests with lua-go]]
+}
+Copy<br>This data is used by Venera Search Engine to index the script, list and so on.]]></description><link>script-engine/metadata.html</link><guid isPermaLink="false">Script Engine/Metadata.md</guid><pubDate>Tue, 23 Jul 2024 00:28:49 GMT</pubDate></item><item><title><![CDATA[Table VARS]]></title><description><![CDATA[ 
+ <br><br>VARS table loads the script's variables, which it uses as parameters for its actions.<br>VARS = {
+    URL = {VALUE="http://example.com", NEEDED="yes", DESCRIPT="URL"},
+    METHOD = {VALUE="GET", NEEDED="yes", DESCRIPT="METHOD"}
+}
+Copy<br>When the variables are setted in VARS table, the user is able to interact with them using the command options to list those variables, and then the command set to configure a value for a variable:<br>(scripts/test/http.lua)&gt;&gt; options
+
+VARIABLE  DEFAULT             NEEDED  DESCRIPTION
+--------  -------             ------  -----------
+URL       http://example.com  yes     URL
+METHOD    GET                 yes     METHOD
+Copy<br>As mentioned, user also can edit those variables with the set command:<br>(scripts/test/http.lua)&gt;&gt; set URL http://google.com
+[OK] URL &lt;- http://google.com
+Copy<br>Then URL value has been changed.<br>(scripts/test/http.lua)&gt;&gt; options
+
+VARIABLE  DEFAULT             NEEDED  DESCRIPTION
+--------  -------             ------  -----------
+URL       http://google.com   yes     URL
+METHOD    GET                 yes     METHOD
+Copy<br>When writing your scripts you may access the value by simply using the value direct from the table:<br>function Main()
+    local request = http.request(VARS.METHOD.VALUE, VARS.URL.VALUE)
+    local result, err = client:do_request(request)
+Copy]]></description><link>script-engine/variables.html</link><guid isPermaLink="false">Script Engine/Variables.md</guid><pubDate>Tue, 23 Jul 2024 00:27:48 GMT</pubDate></item><item><title><![CDATA[Installation Process]]></title><description><![CDATA[ 
+ <br><br>The installation process tends to be very straight forward since all dependencies are easily managed by golang package manager.<br><br>From a completely empty machine, let's start with the installation of golang. I will be using a debian machine.<br>Install the necessary tools.<br>apt update
+apt install -y git wget
+Copy<br>Download the latest version of the language from the official website<a data-footref="1" href="about:blank#fn-1-9f1e0bfbaafce1ab" class="footnote-link" target="_self" rel="noopener">[1]</a>.<br>wget https://go.dev/dl/go(latest).linux-amd64.tar.gz
+tar xvf https://go.dev/dl/go(latest).linux-amd64.tar.gz
+mv go/ ~
+ln -s ~/go/bin/go /usr/bin/
+Copy<br>Testing.<br>root@venera:~# go version
+go version go1.21.2 linux/amd64
+Copy<br><br>git clone https://github.com/venerasf/Venera.git
+cd Venera
+Copy<br>After the first go run execution it will start the installation of all needed dependencies.<br>root@venera:~/Venera# go run venera
+go: downloading github.com/c-bata/go-prompt v0.2.6
+go: downloading github.com/yuin/gopher-lua v1.0.0
+go: downloading github.com/cheynewallace/tabby v1.1.1
+go: downloading github.com/mattn/go-sqlite3 v1.14.3
+go: downloading gopkg.in/yaml.v2 v2.3.0
+...
+Copy<br>After installing all dependencies the tool will try to run, at this point some errors may occur as the tool will try to configure the default environment.<br>If you notice some error envolving go-sqlite3 install build essentials package of your distro.<br>A folder was created in the user's home (~/.venera), where the settings, database, logs and the default location for keeping the scripts are located.<br>root@venera:~/Venera# go run .
+
+        ╦  ╦┌─┐┌┐┌┌─┐┬─┐┌─┐  ╔═╗┬─┐┌─┐┌┬┐┌─┐┬ ┬┌─┐┬─┐┬┌─
+        ╚╗╔╝├┤ │││├┤ ├┬┘├─┤  ╠╣ ├┬┘├─┤│││├┤ ││││ │├┬┘├┴┐
+         ╚╝ └─┘┘└┘└─┘┴└─┴ ┴  ╚  ┴└─┴ ┴┴ ┴└─┘└┴┘└─┘┴└─┴ ┴
+           Recon Mission: github.com/farinap5/venera
+           Read https://venera.farinap5.com/
+                type 'help'      0.90-NotStable
+
+[vnr]&gt;&gt;
+Copy<br>Now you can start using Venera.<br>You may use dokerfile as well.<br><br>
+<br>
+<br><a rel="noopener" class="external-link" href="https://go.dev/dl/" target="_blank">https://go.dev/dl/</a><a href="about:blank#fnref-1-9f1e0bfbaafce1ab" class="footnote-backref footnote-link" target="_self" rel="noopener">↩︎</a>
+]]></description><link>1-installation-from-source.html</link><guid isPermaLink="false">1 - Installation From Source.md</guid><pubDate>Tue, 23 Jul 2024 00:13:01 GMT</pubDate></item><item><title><![CDATA[1 - Installation With The Binary]]></title><description><![CDATA[ 
+ <br>You may opt to use the precompiled binary. However, this option will be more limited in terms of compatible architectures and systems, as the author only compiles for the systems he uses, which will likely always be Linux AMD64.<br>Go to the <a data-tooltip-position="top" aria-label="https://github.com/venerasf/Venera/releases/" rel="noopener" class="external-link" href="https://github.com/venerasf/Venera/releases/" target="_blank">github release page</a> and download it.<br>wget https://github.com/venerasf/Venera/releases/download/v1.2/Venera-linux-x84-64
+Copy<br>Now, move the binary to /usr/bin or another directory included in your PATH.<br>Run venera and and follow the first steps.]]></description><link>1-installation-with-the-binary.html</link><guid isPermaLink="false">1 - Installation With The Binary.md</guid><pubDate>Tue, 23 Jul 2024 00:16:59 GMT</pubDate></item><item><title><![CDATA[First Steps]]></title><description><![CDATA[ 
+ <br><br>Now that you have Venera installed following <a data-href="1 - Installation From Source" href="1-installation-from-source.html" class="internal-link" target="_self" rel="noopener">1 - Installation From Source</a> or <a data-href="1 - Installation With The Binary" href="1-installation-with-the-binary.html" class="internal-link" target="_self" rel="noopener">1 - Installation With The Binary</a>, after before steps it must be ready to go. To run it, open a new command line and run the binary with the venera command, this should load a new interactive prompt, the tool's interface where the user should take their actions.<br>After venera starts up, it must present a banner containing version information and the repository in addition to its name. Since it is your first time some instructions will appear.<br>You will notice that there are no scripts to be executed, that is, the tool does nothing. The first thing you must is to download the scripts from the official repository, or whatever else you want. Do this by using <a data-href="6 - Venera Package Manager" href="6-venera-package-manager.html" class="internal-link" target="_self" rel="noopener">6 - Venera Package Manager</a> (VPM), a built-in package manager for scripts.<br><br>The main repository where the scripts will be downloaded from, is http://r.venera.farinap5.com/package.yaml, you can see it and change for another by managing <a data-href="4 - Global Variables" href="4-global-variables.html" class="internal-link" target="_self" rel="noopener">4 - Global Variables</a>.<br>Type the sync command from VPN and synchronize the scripts.<br>[vnr]&gt;&gt; vpm sync
+[OK]- Requesting http://r.venera.farinap5.com/package.yaml                              
+
+[!]- Intalling /web/trace.lua
+[OK]- /web/trace.lua installed.
+[!]- Intalling /web/ngx1.lua
+[OK]- /web/ngx1.lua installed.
+[!]- Intalling /web/gen_ssti_jinja.lua
+[OK]- /web/gen_ssti_jinja.lua installed.
+...
+Copy<br>Type reload root to refresh the scrpts search engine.<br><br>There are already some scripts to be used. Several scripts were installed for testing, example scripts, and general use scripts.<br>Type the command use followed by any script, the suggestions may give some examples.<br>[vnr]&gt;&gt; use /root/.venera/scripts/test/http.lua
+Copy<br>After loading the script, type info to show some data regarding it.<br>(/root/.venera/scripts/test/http.lua)&gt;&gt; info
+## AUTHOR/S ##
+1) Author1 &lt;author1@mail.com&gt;
+
+## TAGS ##
+1) example
+2) http
+
+## INFO ##
+HTTP requests with lua-go
+(/root/.venera/scripts/test/http.lua)&gt;&gt;
+Copy<br>Type options to see the parameters.<br>(/root/.venera/scripts/test/http.lua)&gt;&gt; options
+
+VARIABLE  DEFAULT             REQUIRED  DESCRIPTION
+--------  -------             --------  -----------
+URL       http://example.com  yes       URL
+METHOD    GET                 yes       METHOD
+Copy<br>Let's reset the URL.<br>(/root/.venera/scripts/test/http.lua)&gt;&gt; set URL http://example.com/
+[OK] URL &lt;- http://example.com/
+(/root/.venera/scripts/test/http.lua)&gt;&gt; options
+
+VARIABLE  DEFAULT              REQUIRED  DESCRIPTION
+--------  -------              --------  -----------
+URL       http://example.com/  yes       URL
+METHOD    GET                  yes       METHOD
+
+(/root/.venera/scripts/test/http.lua)&gt;&gt;
+Copy<br>Now you may execute it by typing run.<br>(/root/.venera/scripts/test/http.lua)&gt;&gt; run
+[OK]- 200
+[OK]- &lt;!doctype html&gt;
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;title&gt;Example Domain&lt;/title&gt;
+		&lt;meta charset="utf-8" /&gt;
+		&lt;meta http-equiv="Content-type" content="text/html; charset=utf-8" /&gt;
+		&lt;meta name="viewport" content="width=device-width, initial-scale=1" /&gt;
+		&lt;style type="text/css"&gt;
+		...
+Copy<br>Awesome. Venera is working as expected!]]></description><link>2-first-steps.html</link><guid isPermaLink="false">2 - First Steps.md</guid><pubDate>Tue, 23 Jul 2024 00:19:35 GMT</pubDate></item><item><title><![CDATA[Search Command]]></title><description><![CDATA[ 
+ <br><br>The search command allows searching and listing scripts by assigning different filtering parameters.<br>The use is very straight forward as it takes proprieties from name, path and metadata to bring results. <br>Just by typing search it will show all listable scripts containing in the database.<br>[*]&gt;&gt; search
+
+COUNT  PATH                                     DESCRIPTION                   TAGS
+-----  ----                                     -----------                   ----
+1      scripts/cms/wp_user_enum.lua             Wordpress user enumeratio...  enum,http,wordpress,scann
+2      scripts/cve/cve-2014/CVE-2014-6271.lua   Shellshock Remote Code Ex...  cve,rce,http,bash,scanner
+3      scripts/cve/cve-2021/CVE-2021-40978.lua  LFI affecting MKDocs 1.2....  cve,lfi,http,mkdocs,scann
+4      scripts/myscripts/meynewsc.lua           IE test                       example,XSS,scanner
+5      scripts/test/base64.lua                  Lorem ipsum dolor sit ame...  example,encoding,util
+...
+Copy<br>It is possible to apply filters like match keyword that will filter using a matching pattern.<br>[*]&gt;&gt; search match &lt;substring&gt;
+Copy<br>It is possible to specify whether the searched pattern can be found in places such as the path or description of the script.<br>search match:path &lt;substring&gt;
+search match:description &lt;substring&gt;
+Copy<br>The main way to search for specific scripts is by tag search. It can be done with the tag parameter.<br>search tag &lt;tag1 tag2...&gt;
+Copy<br>The following example illustrates the usability.<br>[*]&gt;&gt; serach tag nginx apache 
+Copy]]></description><link>3-search.html</link><guid isPermaLink="false">3 - Search.md</guid><pubDate>Mon, 22 Jul 2024 23:07:11 GMT</pubDate></item><item><title><![CDATA[4 - Global Variables]]></title><description><![CDATA[ 
+ <br>The global variable acts like a simple key-value database. It must be used for storing data that can be accessed globally by the core tool and the scripts executed.<br>Global variables are persistent, and will remain between sessions.<br><br>The way to configure a global variable is exactly the same as how to configure a script variable. The user uses the set command followed by the key and the values to assign for that specific key.<br>What changes is that it is now necessary to use the global keyword before the set command.<br>[*]&gt;&gt; globals set &lt;key&gt; &lt;value&gt;
+Copy<br>The way of viewing the global variables is simple, just type globals and the output will contain all the variables already set so far.<br>[*]&gt;&gt; globals
+
+VARIABLE   VALUE
+--------   -----
+key        value
+chain      on
+VERBOSE    true
+user       username
+test       test
+myscripts  myscripts/
+logfile    ~/.venera/message.log
+Copy<br><br>Global variables, just like environment variables of an operating system, will contain some options that the core tool will take into account when taking some actions.<br>For instance, it is possible to configure the location where venera stores the execution logs, it is taken from the global variable logfile so altering the value will change the place to keep the debugging data. You could prefer keep this type of data under /var/log or other place, globals is where to change this.<br><br>Let's assume we want to perform a security test with the script scripts/web/ngx1.lua.<br>The only variable the script requires to be set is the URL variable. It keeps the url of the remote host.<br>(scripts/web/ngx1.lua)&gt;&gt; options
+
+VARIABLE  DEFAULT             REQUIRED  DESCRIPTION
+--------  -------             --------  -----------
+URL       http://example.com  yes       URL
+Copy<br>The URL variable, using globals, can be configured globally, so it is possible to persist this data for future use.<br>So if this variable is common, it is possible to set it outside the script and whenever you enter a script that requires the URL variable it will be set automatically from globals.<br>Configure the variable URL.<br>[*]&gt;&gt; global set URL http://mydomain.com
+Copy<br>And load the script.<br>[*]&gt;&gt; use scripts/web/ngx1.lua
+[OK] URL &lt;- http://mydomain.com
+(scripts/web/ngx1.lua)&gt;&gt; options
+
+VARIABLE  DEFAULT              REQUIRED  DESCRIPTION
+--------  -------              --------  -----------
+URL       http://mydomain.com  yes       URL
+Copy<br>Notice that the variable was configured automatically.]]></description><link>4-global-variables.html</link><guid isPermaLink="false">4 - Global Variables.md</guid><pubDate>Tue, 23 Jul 2024 00:23:47 GMT</pubDate></item><item><title><![CDATA[5 - Script Management Commands]]></title><description><![CDATA[ 
+ <br>This page is to be built.]]></description><link>5-script-management-commands.html</link><guid isPermaLink="false">5 - Script Management Commands.md</guid><pubDate>Mon, 22 Jul 2024 23:07:11 GMT</pubDate></item><item><title><![CDATA[Venera Package Manager]]></title><description><![CDATA[ 
+ <br><br>The vpm is a command that allows you to manage the scripts in your base. It has the main function of synchronizing scripts with a remote repository, therefore the user can select a repository and download some specific scripts, or even all of them.<br>The default repository is http://r.venera.farinap5.com/package.yaml<br>The file package.yaml contains the references to the scripts. This file could have any name, so it must be written correctly.<br>The file package.sgn has the signature for verification<br>This will be used to check if there has been any compromise in the scripts. Must be changed with caution. Verification is done based on trust for that author who has signed the package. Your installation must trust that author, so that the scripts are downloaded.<br><br>VPM has any commands for managing the scripts.<br><br>Use the command search &lt;pattern&gt; to see all scripts matching with given pattern.<br>[vnr]&gt;&gt; vpm search cve
+[OK]- Requesting http://r.venera.farinap5.com/package.yaml
+
+[OK]- 18 scripts found.
+-----------------------
+Script:         /cve/cve-2014/CVE-2014-6271.lua
+Version:        1.000000
+Decription:
+Tags:           tags
+-----------------------
+Script:         /cve/cve-2021/CVE-2021-40978.lua
+Version:        1.000000
+Decription:
+Tags:           tags
+[OK]- 2 scripts.
+Copy<br><br>Use the command install &lt;script path&gt; download one script from the remote repository.<br>[vnr]&gt;&gt; vpm install /cve/cve-2014/CVE-2014-6271.lua
+[OK]- Requesting http://r.venera.farinap5.com/package.yaml
+
+[OK]- /cve/cve-2014/CVE-2014-6271.lua installed.
+[vnr]&gt;&gt;
+Copy<br><br>The command verify may be used to see if the signature of package.yaml can be trusted and has been created by a trusted author as it says. It works because Venera has the author's public key installed, will use it to verify if the hash in file package.sgn (containing package.yam signature) is valid and has been signed by that auth's private key.<br>[vnr]&gt;&gt; vpm verify
+[OK]- Getting key for author: elf@mail.com
+[OK]- Sign date: 2021-8-15 14:30:45
+[OK]- Signed by trusted author: elf@mail.com
+[vnr]&gt;&gt;
+Copy<br><br>Use the sync command to download all scripts from the remote repository and get the last version.<br>[vnr]&gt;&gt; vpm sync
+[OK]- Requesting http://r.venera.farinap5.com/package.yaml
+Copy<br><br>The remote repository is taken from <a data-href="4 - Global Variables" href="4-global-variables.html" class="internal-link" target="_self" rel="noopener">4 - Global Variables</a>, so from there you can set another server from where VPM will look for codes.<br>For instance, if you have a repository on the local network for your team, you can set that repository as the default source using the following commands.<br>Set the repository:<br>[vnr]&gt;&gt; globals set repo http://0.0.0.0/package.yaml
+[vnr]&gt;&gt; globals set sign http://0.0.0.0/package.sgn
+[vnr]&gt;&gt; globals
+
+VARIABLE   VALUE
+--------   -----
+...
+sign       http://0.0.0.0/package.sgn
+repo       http://0.0.0.0/package.yaml
+...
+Copy<br>You must set a signature (globals set sign) resource or disable it!<br>To disable the signature verification, change the value in vpmvs to false. Return to true enable the verification.]]></description><link>6-venera-package-manager.html</link><guid isPermaLink="false">6 - Venera Package Manager.md</guid><pubDate>Mon, 22 Jul 2024 23:56:36 GMT</pubDate></item><item><title><![CDATA[Shortcuts]]></title><description><![CDATA[ 
+ <br>]]></description><link>7-shortcuts.html</link><guid isPermaLink="false">7 - Shortcuts.md</guid><pubDate>Mon, 22 Jul 2024 23:07:11 GMT</pubDate></item><item><title><![CDATA[Contribution]]></title><description><![CDATA[ 
+ <br>First and foremost, Venera is a tool driven by my necessities and learning goals, so many features may not make that sense for you as a user.<br>Feel free to bring new perspectives and ideas. Any type of contribution is always welcome.<br>The main channel for bringing contributions is by creating <a data-tooltip-position="top" aria-label="https://github.com/farinap5/Venera/issues" rel="noopener" class="external-link" href="https://github.com/farinap5/Venera/issues" target="_blank">issues</a>. It is the first way we use to organize the demands. <br>If you are looking for a way to contribute with the project, start by reading the <a data-tooltip-position="top" aria-label="https://github.com/farinap5/Venera/issues" rel="noopener" class="external-link" href="https://github.com/farinap5/Venera/issues" target="_blank">issues</a>, there may have something you can do for the project, like help write or translate documentation, improve code, interface as user usability and so on.<br>We have the python script todo.py. It lists all TODO comments written during the code. It is just another way to map improvements for the future of that function.]]></description><link>contribution.html</link><guid isPermaLink="false">Contribution.md</guid><pubDate>Mon, 22 Jul 2024 23:07:11 GMT</pubDate></item><item><title><![CDATA[Introduction]]></title><description><![CDATA[ 
+ <br><br>Venera is a tool for automating customized tests and attacks agaist many kinds of protocol. It relies on a scripting engine based on the Lua scripting language that makes it possible to create modules for all types of checks and exploits. The framework is a manager and interpreter of Lua scripts that provides functions and libraries for the creation of powerful tools integrated with services used during unitary tests, vulnerability scanning and exploitation fase. The user can create its own modules or use community made scripts, the tool is switchable for all kinds of need situation.<br>The framework is written in Golang looking for compatibility. The simplicity and malleability of the tool is one of the main objectives. Be something powerful and capable, while not being time-consuming to compile and resolve libraries.<br>As the tool is constantly under development and changes may occur all the time, some areas of this documentation may no longer conform to reality. In this case, I ask you to be patient.<br>        __    _ ____________________________________
+        \ \  | |   ___   _  _    ___   _  _   __ _  |
+         \ \ | |  / _ \ | \| |  / _ \ | |//  / _' | |
+          \ \| | |  __/ |  \ | |  __/ | |/  | (_| | |
+           \___|  \___| |_| _|  \___| |_|    \__,_| |
+           -----------------------------------------+
+           Recon Mission: github.com/farinap5/venera
+Copy<br>If you want to start using Venera, take a look at the instalation.
+
+<br><a data-href="1 - Installation From Source" href="1-installation-from-source.html" class="internal-link" target="_self" rel="noopener">1 - Installation From Source</a>
+
+<br>If you have it installed, start using Venera!
+
+<br><a data-href="2 - First Steps" href="2-first-steps.html" class="internal-link" target="_self" rel="noopener">2 - First Steps</a>
+<br><a data-href="3 - Search" href="3-search.html" class="internal-link" target="_self" rel="noopener">3 - Search</a>
+
+]]></description><link>index.html</link><guid isPermaLink="false">index.md</guid><pubDate>Mon, 22 Jul 2024 23:57:22 GMT</pubDate></item></channel></rss>
